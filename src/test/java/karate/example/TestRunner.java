@@ -1,7 +1,12 @@
-# karate-example
-This is an example project on how to set up karate
+package karate.example;
 
-Please run the below test from TestRunner class
+
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestRunner {
 
     @Test
     public void testParallel() {
@@ -10,4 +15,4 @@ Please run the below test from TestRunner class
     }
 
 
-
+}
