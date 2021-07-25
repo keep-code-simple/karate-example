@@ -9,5 +9,5 @@ Please run the below test from TestRunner class
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }
 
-
+Note: There are great examples at karate officail demo repo https://github.com/intuit/karate/tree/master/karate-demo/src/test/java/demo
 
