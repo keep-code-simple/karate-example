@@ -5,7 +5,8 @@ function fn() {
     env = 'e2e'; // a custom 'intelligent' default
   }
   var config = { // base config JSON
-    someUrlBase: 'https://some-host.com/v1/auth/'
+    baseUrl: 'https://reqres.in'
+    someOtherUrl: 'https://stage-host/v1/auth'
   };
 
   if (env == 'stage') {

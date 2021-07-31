@@ -16,6 +16,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <karate.version>1.0.1</karate.version>
+    <gatling.plugin.version>3.1.2</gatling.plugin.version>
   </properties>
 
   <dependencies>
@@ -25,11 +27,25 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <!--karate dependencies-->
     <dependency>
       <groupId>com.intuit.karate</groupId>
       <artifactId>karate-junit4</artifactId>
-      <version>1.0.1</version>
+      <version>${karate.version}</version>
       <scope>test</scope>
+    </dependency>
+    <!--karate-gatling-->
+    <dependency>
+      <groupId>com.intuit.karate</groupId>
+      <artifactId>karate-gatling</artifactId>
+      <version>${karate.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!--Cucumber report-->
+    <dependency>
+      <groupId>net.masterthought</groupId>
+      <artifactId>cucumber-reporting</artifactId>
+      <version>5.5.4</version>
     </dependency>
 
   </dependencies>
@@ -84,7 +100,37 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <!--Gatling Maven Plugin-->
+        <plugin>
+          <groupId>io.gatling</groupId>
+          <artifactId>gatling-maven-plugin</artifactId>
+          <version>${gatling.plugin.version}</version>
+          <configuration>
+            <simulationsFolder>src/test/java</simulationsFolder>
+            <includes>
+              <include>karate.perf.UsersSimulation</include>
+            </includes>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>test</phase>
+              <goals>
+                <goal>test</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
